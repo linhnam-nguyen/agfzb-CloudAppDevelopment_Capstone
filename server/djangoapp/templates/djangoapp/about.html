@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Dealership Review</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+</head>
+
+    <body>
+    <!--Add a nav bar here -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Elite Motors</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'djangoapp:index' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'djangoapp:about_us' %}">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'djangoapp:contact_us' %}">Contact us</a>
+                        </li>
+                        <!-- Additional nav items can be added here -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--About us content -->
+        <div class="container mt-5 bg-light p-4 rounded">
+            <h2 class="text-dark">About Us</h2>
+            <p class="text-secondary">Welcome to <strong class="text-dark">Elite Motors</strong>, a beacon of luxury and excellence in the automotive world. Since our inception in 1985, Elite Motors has been at the forefront of offering an exclusive collection of the world's most prestigious vehicles. We're not just a dealership; we're an institution that celebrates automotive passion and excellence.</p>
+            
+            <h3 class="text-dark">Our Journey</h3>
+            <p class="text-secondary">Founded by automotive enthusiast and visionary, Johnathan Elite, our journey began in a modest showroom in the heart of New York City. With a passion for exquisite cars and a commitment to customer service, Elite Motors quickly became a name synonymous with luxury and quality. Over the years, we expanded our showroom to include a variety of luxury and high-performance vehicles, catering to a diverse clientele that values sophistication and performance.</p>
+        
+            <h3 class="text-dark">Exclusive Collection</h3>
+            <p class="text-secondary">Our curated collection features a range of luxury brands including Ferrari, Lamborghini, Porsche, and Bentley. Each car in our showroom is handpicked for its uniqueness, performance, and history. We specialize in rare finds and limited-edition models, offering our clients something truly exceptional and exclusive.</p>
+        
+            <h3 class="text-dark">Commitment to Excellence</h3>
+            <p class="text-secondary">At Elite Motors, we believe that buying a luxury car should be an experience as special as the vehicle itself. Our team of experienced professionals is dedicated to providing personalized service to each of our clients. From vehicle selection to after-sales support, we ensure an unparalleled level of service. Our state-of-the-art service center and expert technicians ensure that every vehicle we offer is in pristine condition.</p>
+        
+            <h3 class="text-dark">Global Recognition</h3>
+            <p class="text-secondary">Over the years, Elite Motors has garnered recognition and accolades from various international automotive societies and publications. Our commitment to excellence and dedication to the art of luxury motoring have made us a global icon in the automotive industry.</p>
+        
+            <h3 class="text-dark">Join the Elite</h3>
+            <p class="text-secondary">We invite you to visit our showroom and experience the world of luxury and performance at Elite Motors. Join the elite group of car enthusiasts who share a passion for the extraordinary. Elite Motors, where dreams are driven.</p>
+        </div>
+
+    </body>
+
+</html>

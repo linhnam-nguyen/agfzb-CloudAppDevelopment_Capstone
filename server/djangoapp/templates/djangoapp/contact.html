@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Dealership Review</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+</head>
+
+    <body>
+    <!--Add a nav bar here -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Elite Motors</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'djangoapp:index' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'djangoapp:about_us' %}">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'djangoapp:contact_us' %}">Contact us</a>
+                        </li>
+                        <!-- Additional nav items can be added here -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--About us content -->
+        <div class="container mt-5 bg-light p-4 rounded">
+            <h2 class="text-dark">Contact Us</h2>
+            <p class="text-secondary">At Elite Motors, we are always ready to assist you. Whether you need more information about our exclusive inventory, require assistance with vehicle selection, or have any other inquiries, our dedicated team is here to help. Feel free to reach out to us through any of the following channels:</p>
+            
+            <h3 class="text-dark">Get in Touch</h3>
+            <p class="text-secondary">
+                <strong>Email:</strong> <a href="mailto:inventory@elitemotors.com">inventory@elitemotors.com</a><br>
+                <strong>Phone:</strong> +1 (555) 123-4567
+            </p>
+        
+            <h3 class="text-dark">Visit Our Showroom</h3>
+            <p class="text-secondary">
+                Elite Motors, 123 Prestige Lane,<br>
+                Luxury City, LX 56789<br>
+                <strong>Opening Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM<br>
+                Saturday, 10:00 AM - 4:00 PM
+            </p>
+        
+            <h3 class="text-dark">Follow Us</h3>
+            <p class="text-secondary">
+                Stay updated with the latest at Elite Motors:<br>
+                <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+            </p>
+        </div>
+
+    </body>
+
+</html>
