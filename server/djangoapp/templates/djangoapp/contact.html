@@ -11,34 +11,115 @@
     <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <script>
+        function handleLogout() {
+            $('#logoutModal').modal('show');
+            setTimeout(function () {
+                window.location.href = "{% url 'djangoapp:logout' %}"; // Redirect to the homepage URL
+            }, 2000);
+        }
+    </script>
+    <script type="text/javascript">
+        var login_failed = {{ login_failed|default:'false' }};
+    </script>
+    <script>
+        $(document).ready(function() {
+            if (login_failed)
+            {$('#loginBox').modal('show');}
+        })
+    </script>
 
 </head>
 
     <body>
     <!--Add a nav bar here -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Elite Motors</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'djangoapp:index' %}">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'djangoapp:about_us' %}">About us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'djangoapp:contact_us' %}">Contact us</a>
-                        </li>
-                        <!-- Additional nav items can be added here -->
-                    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Elite Motors</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'djangoapp:index' %}">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'djangoapp:about_us' %}">About us</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'djangoapp:contact_us' %}">Contact us</a>
+                    </li>
+                    <!-- Additional nav items can be added here -->
+                </ul>
+
+
+            </div>
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav ml-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="handleLogout()">Logout</a>
+                    </li>
+                </ul>  
+            {% else %}
+                <form class="form-inline ml-auto" action="{% url 'djangoapp:login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Username" name="username" >
+                        <input type="password" class="form-control mr-1" placeholder="Password" name="psw" >
+                    </div>
+                    <input type="hidden" name="current_template" value="index.html">
+                    <button class="btn btn-outline-light mr-1" type="submit">Login</button>
+                </form>
+                <a class="btn btn-outline-light mr-1" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!--Loging Out Warning -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    You have logged out!<br>Redirecting to homepage...
                 </div>
             </div>
-        </nav>
-        <!--About us content -->
+        </div>
+    </div>
+
+    <!-- Login Box -->
+    <div id="loginBox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'djangoapp:login' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="psw" placeholder="Password">
+                            <input type="hidden" name="current_template" value="contact.html">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="{% url 'djangoapp:login' %}">Forgot my password</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!--Contact content -->
         <div class="container mt-5 bg-light p-4 rounded">
             <h2 class="text-dark">Contact Us</h2>
             <p class="text-secondary">At Elite Motors, we are always ready to assist you. Whether you need more information about our exclusive inventory, require assistance with vehicle selection, or have any other inquiries, our dedicated team is here to help. Feel free to reach out to us through any of the following channels:</p>
@@ -63,7 +144,16 @@
                 <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
             </p>
         </div>
-
+        <!--Loging Out Warning -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        You have logged out!<br>Redirecting to homepage...
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>

@@ -125,3 +125,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 MEDIA_URL = '/media/'
+
+# Set session to expire after 5 minutes of inactivity
+SESSION_COOKIE_AGE = 300  # seconds
+# Expire the session when the user closes their browser
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
